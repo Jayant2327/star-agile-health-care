@@ -5,7 +5,7 @@ metadata:
   labels:
     app: health-eta-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: health-eta-app
@@ -32,5 +32,6 @@ spec:
 
   type: NodePort
   ports:
+  - nodePort: 31002
     port: 8082
     targetPort: 8082
