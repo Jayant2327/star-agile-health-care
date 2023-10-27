@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bankapp-eta-deploy
+  name: health-eta-deploy
   labels:
-    app: bankapp-eta-app1
+    app: health-eta-app1
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: bankapp-eta-app
+      app: health-eta-app
   template:
     metadata:
       labels:
-        app: bankapp-eta-app
+        app: health-eta-app
     spec:
       containers:
-      - name: bankapp-eta-container
-        image: loksaieta/bankapp-eta-app:latest
+      - name: health-eta-container
+        image: jayant2327/health-eta-app:latest
         ports:
         - containerPort: 8082
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: bankapp-eta-np-service1
+  name: health-eta-np-service1
   labels:
-    app: bankapp-eta-app1
+    app: health-eta-app1
 spec:
   selector:
-    app: bankapp-eta-app
+    app: health-eta-app
 
   type: NodePort
   ports:
-  - nodePort: 31111    
+  - nodePort: 31112    
     port: 8082
     targetPort: 8082
